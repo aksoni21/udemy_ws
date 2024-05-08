@@ -4,6 +4,8 @@
     <xacro:include filename="common_props.xacro"/>
     <xacro:include filename="mobile_bot.xacro"/>
     <xacro:include filename="mobile_bot_gazebo.xacro"/>
+    <xacro:include filename="camera.xacro"/>
+    <xacro:include filename="arm.xacro"/>
 
    
   </robot>

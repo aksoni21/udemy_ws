@@ -35,7 +35,9 @@ def generate_launch_description():
             
         ],
         output='screen',
+       # arguments=[os.path.join(get_package_prefix("my_robot_bringup"), "share","my_world.world")],
     )
+    
 
     # robot_description = {'robot_description': open(urdf).read()}
     # robot_description = {"command 'xacro $(var urdf)'"}

@@ -1,7 +1,8 @@
 <launch>
     <!-- declare var -->
-    <let name="urdf_path" value="$(find-pkg-share my_pkg)/urdf/my_robot.urdf.xacro" />
+    <let name="urdf_path" value="$(find-pkg-share my_pkg)/urdf/standalone_arm.urdf.xacro" />
     <let name ="rviz_config_path" value="$(find-pkg-share my_pkg)/rviz/rviz_config.rviz" />
+
     <node pkg ="robot_state_publisher" exec="robot_state_publisher">
         <param name ="robot_description"
             value="$(command 'xacro $(var urdf_path)')" />
