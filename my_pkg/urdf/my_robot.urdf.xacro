@@ -4,8 +4,14 @@
     <xacro:include filename="common_props.xacro"/>
     <xacro:include filename="mobile_bot.xacro"/>
     <xacro:include filename="mobile_bot_gazebo.xacro"/>
-    <xacro:include filename="camera.xacro"/>
+    <!-- <xacro:include filename="camera.xacro"/> -->
     <xacro:include filename="arm.xacro"/>
-
+    <xacro:include filename="arm_gazebo.xacro"/>
+    
+    <joint name="mobile_bot_arm_joint" type="fixed">
+      <origin xyz="${base_len / 4} 0 ${base_h}" rpy="0.0 0.0 0.0"/>
+      <parent link="base_link"/>
+      <child link="world_arm"/>
+    </joint>
    
   </robot>
