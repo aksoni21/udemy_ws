@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="robot_name">
+    <xacro:property name="PI" value="3.14159265359"/>
+    <ros2_control name = "FR5_Sim" type="System">
+        <hardware>
+            <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+        </hardware>
+
+        <joint name="forearm_arm_base_joint">
+            <command_interface name = "position">
+                <param name = "min">-${PI/2}</param>
+                <param name = "max">${PI/2}</param>
+            </command_interface>
+            <state_interface name = "position"/>
+            <state_interface name = "velocity"/>
+        </joint>
+
+        <joint name = "hand_forearm_arm_joint">
+            <command_interface name = "position">
+                <param name = "min">-${PI/2}</param>
+                <param name = "max">${PI/2}</param>
+            </command_interface>
+            <state_interface name = "position"/>
+            <state_interface name = "velocity"/>
+        </joint>
+    </ros2_control>
+
+    <gazebo>
+        <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
+            <robot_param>robot_description</robot_param>
+            <robot_param_node>robot_state_publisher</robot_param_node>
+            <parameters>$(find my_pkg)/config/controllers.yaml</parameters>
+        </plugin>
+    </gazebo>
+
+</robot>

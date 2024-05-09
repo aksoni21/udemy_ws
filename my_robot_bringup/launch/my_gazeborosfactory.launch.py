@@ -37,6 +37,15 @@ def generate_launch_description():
         output='screen',
        # arguments=[os.path.join(get_package_prefix("my_robot_bringup"), "share","my_world.world")],
     )
+    joint_trajectory_controller = Node(
+            package="controller_manager",
+            executable="spawner",
+            arguments=[
+                "arm_controller",
+                "--controller-manager", "/controller_manager",
+            ]
+
+    )
     
 
     # robot_description = {'robot_description': open(urdf).read()}
@@ -60,6 +69,7 @@ def generate_launch_description():
         # ),
         start_gazebo_server_cmd,
         start_gazebo_client_cmd,
+        joint_trajectory_controller,
         # Node(
         #     package='gazebo_ros',
         #     executable='spawn_entity.py',

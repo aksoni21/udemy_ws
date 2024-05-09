@@ -7,6 +7,7 @@
     <!-- <xacro:include filename="camera.xacro"/> -->
     <xacro:include filename="arm.xacro"/>
     <xacro:include filename="arm_gazebo.xacro"/>
+    <xacro:include filename="arm_control.xacro"/>
     
     <joint name="mobile_bot_arm_joint" type="fixed">
       <origin xyz="${base_len / 4} 0 ${base_h}" rpy="0.0 0.0 0.0"/>

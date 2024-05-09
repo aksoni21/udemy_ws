@@ -6,7 +6,7 @@
     <xacro:property name="wheel_rad" value="0.1"/>
     <xacro:property name="wheel_len" value="0.05"/>
 
-      <link name="world" />
+      <link name="world_mylink" />
 
       <link name="base_link">
           <visual>
@@ -28,7 +28,7 @@
         </link>
 
         <joint name="base_world" type="fixed">
-            <parent link="world" />
+            <parent link="world_mylink" />
             <child link="base_link" />
             <origin xyz="0 0 0.1" rpy="0 0 0"/>
         </joint>
@@ -89,6 +89,7 @@
         <parent link="base_link" />
         <child link="caster_wheel_link" />
         <origin xyz="${base_len / 3.0} 0 ${-wheel_rad / 2.0}" rpy="0 0 0" />
+        <dynamics friction="0.1" damping="0.1"/>
     </joint>
 
 

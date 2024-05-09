@@ -1,0 +1,22 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 10
+    
+    # Joint Trajectory Controller
+    arm_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    gripper_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+arm_controller:
+  ros__parameters:
+    joints:
+      - forearm_arm_base_joint
+      - hand_forearm_arm_joint
+    
+    command_interfaces:
+      - posi
