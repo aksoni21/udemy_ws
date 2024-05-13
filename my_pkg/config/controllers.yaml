@@ -1,16 +1,36 @@
 controller_manager:
   ros__parameters:
     update_rate: 10
-    
-    # Joint Trajectory Controller
+    use_sim_time: true
+
+
+    #Joint State Broadcaster
+    joint_broad_controller:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+
+    #Mobile Bot Controller
+    diff_controller:
+      type: diff_drive_controller/DiffDriveController
+
+
+    #Arm Joint Trajectory Controller
     arm_controller:
       type: joint_trajectory_controller/JointTrajectoryController
 
     gripper_controller:
       type: joint_trajectory_controller/JointTrajectoryController
 
-    joint_state_broadcaster:
-      type: joint_state_broadcaster/JointStateBroadcaster
+diff_controller:
+  ros__parameters:
+    publish_rate: 50.0
+    base_frame_id: world_mylink
+    left_wheel_names: ['base_left_wheel_joint']
+    right_wheel_names: ['base_right_wheel_joint']
+    wheel_seperation: 0.35
+    wheel_radius: 0.05
+    use_stamped_vel: false
+
 
 arm_controller:
   ros__parameters:
@@ -19,4 +39,4 @@ arm_controller:
       - hand_forearm_arm_joint
     
     command_interfaces:
-      - posi
+      - position

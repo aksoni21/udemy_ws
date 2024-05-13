@@ -37,17 +37,28 @@ def generate_launch_description():
         output='screen',
        # arguments=[os.path.join(get_package_prefix("my_robot_bringup"), "share","my_world.world")],
     )
-    joint_trajectory_controller = Node(
+    diff_drive_spawner = Node(
             package="controller_manager",
             executable="spawner",
-            arguments=[
-                "arm_controller",
-                "--controller-manager", "/controller_manager",
-            ]
-
+            arguments=["diff_controller"]
     )
     
-
+    joint_broad_spawner = Node(
+            package="controller_manager",
+            executable="spawner",
+            arguments=["joint_broad_controller"]
+    )
+    arm_control_spawner = Node(
+            package="controller_manager",
+            executable="spawner",
+            arguments=["arm_controller"]
+    )
+    gripper_control_spawner = Node(
+            package="controller_manager",
+            executable="spawner",
+            arguments=["gripper_controller"]
+    )
+    
     # robot_description = {'robot_description': open(urdf).read()}
     # robot_description = {"command 'xacro $(var urdf)'"}
 
@@ -69,7 +80,10 @@ def generate_launch_description():
         # ),
         start_gazebo_server_cmd,
         start_gazebo_client_cmd,
-        joint_trajectory_controller,
+        diff_drive_spawner,
+        joint_broad_spawner,
+        arm_control_spawner,
+        gripper_control_spawner,
         # Node(
         #     package='gazebo_ros',
         #     executable='spawn_entity.py',
